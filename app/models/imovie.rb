@@ -1,0 +1,2 @@
+class Imovie < ApplicationRecord
+end
