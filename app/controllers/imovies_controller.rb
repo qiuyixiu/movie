@@ -17,8 +17,11 @@ class ImoviesController < ApplicationController
 
   def create
     @imovie = Imovie.new(imovie_params)
-    @imovie.save
+    if @imovie.save
        redirect_to imovies_path
+    else
+       render :new
+    end
   end
 
   def update
