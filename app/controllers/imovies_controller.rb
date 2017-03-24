@@ -7,6 +7,10 @@ class ImoviesController < ApplicationController
     @imovie = Imovie.find(params[:id])
   end
 
+  def edit
+    @imovie = Imovie.find(params[:id])
+  end
+
   def new
     @imovie = Imovie.new
   end
@@ -15,6 +19,21 @@ class ImoviesController < ApplicationController
     @imovie = Imovie.new(imovie_params)
     @imovie.save
        redirect_to imovies_path
+  end
+
+  def update
+    @imovie = Imovie.find(params[:id])
+
+    @imovie.update(imovie_params)
+
+    redirect_to imovies_path, notice: "更新成功"
+  end
+
+  def destroy
+    @imovie = Imovie.find(params[:id])
+    @imovie.destroy
+    flash[:alert] = "电影删除"
+    redirect_to imovies_path
   end
 
   private
